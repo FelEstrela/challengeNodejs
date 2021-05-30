@@ -1,16 +1,22 @@
 {
   "name": "challengenodejs",
-  "version": "0.0.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "desafio nodeJs",
+  "main": "app.js",
   "scripts": {
-    "start": "node ./bin/www"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "startdev": "nodemon app.js"
   },
+  "author": "Felipe Estrela",
+  "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
+    "jquery": "^3.6.0",
     "morgan": "~1.9.1"
   }
 }

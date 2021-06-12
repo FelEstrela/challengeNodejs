@@ -1,17 +1,24 @@
 module.exports = (sequelize, dataTypes) => {
     const Actor = sequelize.define('Actor', {
         id: {
-            autoIncrement: true,
             primaryKey: true,
-            type: dataTypes.INTEGER
+            autoIncrement: true,
+            type: dataTypes.INTEGER(10),  
         },
         first_name: {
-            allowNull: false,
-            type: dataTypes.STRING
+            type: dataTypes.STRING(200),
         },
         last_name: {
-            allowNull: false,
-            type: dataTypes.STRING,
+            type: dataTypes.STRING(200),
+        },
+        full_name: {
+            type: DataTypes.VIRTUAL,
+                get() {
+                    return `${this.first_name} ${this.last_name}`;
+                },
+                set(value) {
+                    throw new Error('No se debe agregar un valor a "full_name');
+                },
         },
     },
         {
@@ -25,7 +32,7 @@ module.exports = (sequelize, dataTypes) => {
             through: 'actor_movie',
             foreignKey: 'actor_id',
             otherKey: 'movie_id',
-            timestamps: false,
+            timestamps: true,
         });
     }
     return Actor;

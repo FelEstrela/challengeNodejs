@@ -4,7 +4,7 @@ module.exports = (sequelize, dataTypes) => {
             autoIncrement: true,
             primaryKey: true,
             allowNull: false,
-            type: dataTypes.INTEGER,
+            type: dataTypes.INTEGER(11),
         },
         createdAt: {
             field: 'created_at',
@@ -26,23 +26,7 @@ module.exports = (sequelize, dataTypes) => {
         },
         title: {
             allowNull: false,
-            type: dataTypes.STRING,
-        },
-        rating: {
-            allowNull: false,
-            type: dataTypes.DOUBLE,
-        },
-        awards: {
-            allowNull: false,
-            type: dataTypes.INTEGER,
-        },
-        release_date: {
-            allowNull: false,
-            type: dataTypes.DATE,
-        },
-        length: {
-            allowNull: false,
-            type: dataTypes.INTEGER,
+            type: dataTypes.STRING(200),
         },
         genre_id: {
             allowNull: false,
@@ -51,7 +35,7 @@ module.exports = (sequelize, dataTypes) => {
     },
         {
             tableName: 'movies',
-            timestamps: true,
+            timestapms: true,
             paranoid: true,
         });
 

@@ -9,10 +9,18 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false,
             type: dataTypes.STRING,
         },
+        createdAt: {
+            field: 'created_at',
+            type: dataTypes.DATE,
+        },
+        updatedAt: {
+            field: 'updated_at',
+            type: dataTypes.DATE,
+        },
     },
         {
             tableName: 'genres',
-            timestamps: false,
+            timestamps: true,
         });
 
     Genre.associate = (models) => {

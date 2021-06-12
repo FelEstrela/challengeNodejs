@@ -5,6 +5,14 @@ module.exports = (sequelize, dataTypes) => {
             autoIncrement: true,
             type: dataTypes.INTEGER(10),  
         },
+        createdAt: {
+            field: 'created_at',
+            type: dataTypes.DATE,
+        },
+        updatedAt: {
+            field: 'updated_at',
+            type: dataTypes.DATE,
+        },
         first_name: {
             type: dataTypes.STRING(200),
         },
@@ -23,7 +31,7 @@ module.exports = (sequelize, dataTypes) => {
     },
         {
             tableName: 'actors',
-            timestamps: false,
+            timestamps: true,
         });
 
     Actor.associate = (models) => {

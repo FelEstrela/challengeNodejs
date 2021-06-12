@@ -16,14 +16,14 @@ module.exports = (sequelize, dataTypes) => {
         password: {
             type: dataTypes.STRING,
         },
-        // created_at: {
-        //     allowNull: true,
-        //     type: dataTypes.DATE,
-        // },
-        // updated_at: {
-        //     allowNull: true,
-        //     type: dataTypes.DATE,
-        // },
+        createdAt: {
+            field: 'created_at',
+            type: dataTypes.DATE,
+        },
+        updatedAt: {
+            field: 'updated_at',
+            type: dataTypes.DATE,
+        },
         rol: {
             type: dataTypes.BOOLEAN,
         },
@@ -31,8 +31,6 @@ module.exports = (sequelize, dataTypes) => {
         {
             tableName: 'users',
             timestamps: true,
-            // createdAt: 'created_at',
-            // updatedAt: 'updated_at',
         })
 
     return User;

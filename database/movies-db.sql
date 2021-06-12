@@ -215,6 +215,7 @@ CREATE TABLE `movies` (
   `release_date` datetime NOT NULL,
   `length` int(10) unsigned DEFAULT NULL,
   `genre_id` int(10) unsigned DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `movies_genre_id_foreign` (`genre_id`),
   CONSTRAINT `movies_genre_id_foreign` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`)

@@ -1,0 +1,51 @@
+<%- include('partials/head.ejs') %>
+
+<%- include('partials/header.ejs') %>
+<section>
+    <h2><%= locals.movie && movie.title %></h2>
+    <div class="movie">
+        <h3>Duración:</h3>
+        <p>
+            <%= locals.movie && movie.length %> min.
+        </p>
+        <h3>Rating:</h3>
+        <p>
+            <%= locals.movie && movie.rating %>
+        </p>
+        <h3>Fecha de Estreno:</h3>
+        <p>
+            <%= locals.movie && movie.release_date %>
+        </p>
+        <% if(locals.movies && movie.genre_id==null){ %>
+        <p>
+        <%= "Esta pelicula no tiene genero" %>
+        </p>
+        <% }else{ %>
+        <h3>Genero:</h3>
+        <p>
+        <%= movie.genre.name %>
+        </p>
+        <% } %>
+        <h3>Actores: </h3>
+        <p>
+        <% locals.movie && movie.actors.forEach(actors=> { %>
+        <div class="actors">
+        <p>
+        <%= actors.full_name %>
+        </p>
+        </div>
+        <% }); %>
+        </p>
+        <% if (locals.user) { %>
+        <% if (locals.user.rol) { %>
+        <a href='/movies/edit/<%= movie.id %>'><button class="movie-button">Editar</button></a>
+        <form action='/movies/delete/<%= movie.id %>?_method=DELETE' method="POST">
+        <button class="movie-button" type="submit">Eliminar</button>
+        </form>
+        <% } %>
+        <% } else { %>
+        <a href="/"> <button>Volver</button> </a>
+        <% } %>
+    </div>  
+</section>
+<%- include('partials/footer') %>

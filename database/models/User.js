@@ -14,15 +14,22 @@ module.exports = (sequelize, dataTypes) => {
             unique: true
         },
         password: {
+            allowNull: false,
             type: dataTypes.STRING,
         },
         createdAt: {
+            allowNull: true,
             field: 'created_at',
             type: dataTypes.DATE,
         },
         updatedAt: {
+            allowNull: true,
             field: 'updated_at',
             type: dataTypes.DATE,
+        },
+        remember_token: {
+            type: dataTypes.STRING,
+            allowNull: false,
         },
         rol: {
             type: dataTypes.BOOLEAN,

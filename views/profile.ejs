@@ -1,0 +1,25 @@
+<%- include('partials/head.ejs') %>
+
+<%- include('partials/header.ejs') %>
+<section class="profile">
+            <div class="user">
+                <br />
+                <div class="user-name">
+                    <h2>
+                        <%= user.name %>
+                    </h2>   
+                </div>
+                <div class="user-email">
+                <h2>
+                    <%= user.email %>
+                </h2>
+                <div class="align-button">
+                <a href="/user/modify/<%= user.id %>"><button class="user-button">Editar</button></a>
+                <form action='/user/delete/<%= user.id %>?_method=DELETE' method="POST">
+                <button class="user-button" type="submit">Eliminar</button>
+                </form>
+                </div>
+            </div>
+        </div>
+</section>
+<%- include('partials/footer.ejs') %>

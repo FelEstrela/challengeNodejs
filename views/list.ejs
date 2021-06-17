@@ -1,0 +1,17 @@
+<%- include('partials/head.ejs') %>
+
+<%- include('partials/header.ejs') %>
+<section>
+<h2>Listado de Usuarios:</h2>
+<div class="profile">
+    <% user.forEach( user=> { %>
+    <div class="user">
+        <a href="/user/profile/<%=user.id%>">
+            <h2><%= user.name %></h2>
+            <h2><%= user.email %></h2>
+        </a>
+    </div>
+    <% }) %>
+</div>
+</section>
+<%- include('partials/footer') %>

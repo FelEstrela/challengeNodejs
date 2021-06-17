@@ -1,0 +1,45 @@
+<%- include('partials/head.ejs') %>
+
+<%- include('partials/header.ejs') %>
+<section>
+    <h2>Editar <%= locals.movie && movie.title %></h2>
+    <div class="add-movie">
+    <form action='/movies/edit/<%= movie.id%>?_method=PUT' method="POST">
+        <div class="input_field">
+            <label for="title">Titulo: </label>
+            <input class="box" type="text" id="title" name="title" value="<%= movie.title %>">
+        </div>
+        <div class="input_field">
+            <label for="title">Duración: </label>
+            <input class="box" type="text" id="length" name="length" value="<%= movie.length %>">
+        </div>
+        <div class="input_field">
+            <label for="title">Premios: </label>
+            <input class="box" type="text" id="awards" name="awards" value="<%= movie.awards %>">
+        </div>
+        <div class="input_field">
+            <label for="title">Rating: </label>
+            <input class="box" type="text" id="rating" name="rating" value="<%= movie.rating %>">
+        </div>
+        <div class="input_field">
+            <label for="title">Fecha de Estreno: </label>
+            <input class="box" type="date" id="release_date" name="release_date" value="<%= movie.release_date %>">
+        </div>
+        <div class="input_field">
+            <label for="genre">Genero: </label>
+            <select name="genre">
+                <option>
+                  Elegir genero  
+                </option>
+                <% genres.forEach(element=> { %>
+                <option value="<%= element.id%> ">
+                    <%= element.name %>
+                </option>
+                <% }); %>
+            </select>
+        </div>
+        <input class="movie-button" type="submit" value="Editar">
+    </form>
+    </div>
+</section>
+<%- include('partials/footer') %>

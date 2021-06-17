@@ -1,0 +1,37 @@
+<%- include('partials/head.ejs') %>
+
+<%- include('partials/header.ejs') %>
+<section>
+    <h2>Editar Usuario</h2>
+    <div class="user">
+    <form action='/user/modify/<%= user.id%>?_method=PUT' method="POST">
+        <div class="input_field">
+            <label for="name">Nombre y Apellido</label>
+            <input type="text" name='name' id="name" value="<%=user.name%>">
+            <div class="field-feedback error-first-name">
+                <% if (locals.errors && errors.name) { %>
+                    <%=errors.name.msg%>
+                        <% } %>
+            </div>
+        </div>
+        <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" name='email' id="email" value="<%=user.email%>">
+            <div class="field-feedback error-email">
+                <% if (locals.errors && errors.email) { %>
+                <%= errors.email.msg %>
+                <% } %>
+            </div>
+        </div>
+        <% if (locals.user) { %>
+        <% if (locals._locals.session.auth) { %>   
+        <div class="form-field">
+        <a href="/user/modify/<%= user.id %>"><button class="user-button">Editar</button></a>
+        <form action='/user/delete/<%= user.id %>?_method=DELETE' method="POST">
+            <button class="user-button" type="submit">Eliminar</button>
+        </form>
+        <% } %>
+    </form>
+    </div>        
+</section>
+<%- include('partials/footer.ejs') %>

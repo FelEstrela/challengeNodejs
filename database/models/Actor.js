@@ -5,14 +5,6 @@ module.exports = (sequelize, dataTypes) => {
             autoIncrement: true,
             type: dataTypes.INTEGER(10),  
         },
-        createdAt: {
-            field: 'created_at',
-            type: dataTypes.DATE,
-        },
-        updatedAt: {
-            field: 'updated_at',
-            type: dataTypes.DATE,
-        },
         first_name: {
             type: dataTypes.STRING(200),
         },
@@ -20,7 +12,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING(200),
         },
         full_name: {
-            type: DataTypes.VIRTUAL,
+            type: dataTypes.VIRTUAL,
                 get() {
                     return `${this.first_name} ${this.last_name}`;
                 },
@@ -31,7 +23,7 @@ module.exports = (sequelize, dataTypes) => {
     },
         {
             tableName: 'actors',
-            timestamps: true,
+            timestamps: false,
         });
 
     Actor.associate = (models) => {
@@ -40,7 +32,7 @@ module.exports = (sequelize, dataTypes) => {
             through: 'actor_movie',
             foreignKey: 'actor_id',
             otherKey: 'movie_id',
-            timestamps: true,
+            timestamps: false,
         });
     }
     return Actor;

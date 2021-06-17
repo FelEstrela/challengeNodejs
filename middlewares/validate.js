@@ -18,21 +18,29 @@ body('password')
 // login
 loginIn: [
 body('email').isEmail().withMessage('Escriba un e-mail que sea valido'),
-body('password').notEmpty().withMessage('Escriba una contraseña valida'),
+body('password').notEmpty().withMessage('Escriba una contraseña valida')
     ],
 
 // movies
-movieCreate: [
+addMovie: [
 body('title')
     .notEmpty().withMessage('Ingrese el nombre de la pelicula').bail()
     .isLength({ min: 2, }).withMessage('Debe tener al menos 2 letras')
     .isLength({ max: 30, }).withMessage('No debe ser mayor a 30 letras'),
-body('release_date')
-    .notEmpty().withMessage('Introduzca una fecha'),
 body('length')
     .notEmpty().withMessage('Ingrese una duración').bail()
     .isLength({ min: 1, }).withMessage('Debe tener al menos 1 numero')
     .isLength({ max: 3, }).withMessage('No debe ser mayor a 3 numeros'),
+body('awards')
+    .notEmpty().withMessage('Ingrese cantidad de premios').bail()
+    .isLength({ min: 1, }).withMessage('Debe tener al menos 1 numero')
+    .isLength({ max: 3, }).withMessage('No debe ser mayor a 3 numeros'),
+body('rating')
+    .notEmpty().withMessage('Ingrese un rating').bail()
+    .isLength({ min: 1, }).withMessage('Debe tener al menos 1 caracter')
+    .isLength({ max: 4, }).withMessage('No debe ser mayor a 4 caracteres'), 
+body('release_date')
+    .notEmpty().withMessage('Introduzca una fecha'),
 body('genre')
     .notEmpty().withMessage('Tenes que seleccionar una categoria'),
     ],

@@ -1,0 +1,74 @@
+<%- include('partials/head.ejs') %>
+
+<%- include('partials/header.ejs') %>
+<section>
+    <h2>Agregar pelicula</h2>
+    <div class="add-movie">
+        <form action='/movies/add' method="POST">
+        <div class="form-container">
+            <label for="title">Titulo: </label>
+            <input class="box" type="text" id="title" name="title" value="<%= locals.oldFormData && oldFormData.title ? oldFormData.title : '' %>">
+                <% if (locals.errors && errors.title) { %>
+                <div class="input-field error-title">
+                <%= errors.title.msg %>
+                </p>
+                <% } %>
+        </div>
+        <div class="form-container">
+                <label for="length">Duración: </label>
+                <input class="box" type="text" id="length" name="length">
+                <% if (locals.errors && errors.length) { %>
+                <div class="input-field error-length">
+                <%= errors.length.msg %>
+                </p>
+                <% } %>                
+        </div>
+        <div class="form-container">
+                <label for="awards">Premios: </label>
+                <input class="box" type="text" id="awards" name="awards">
+                <% if (locals.errors && errors.awards) { %>
+                <div class="input-field error-awards">
+                <%= errors.awards.msg %>
+                </div>
+                <% } %>
+        </div>
+        <div class="form-container">
+                <label for="rating">Rating: </label>
+                <input class="box" type="text" id="rating" name="rating">
+                <% if (locals.errors && errors.rating) { %>
+                <div class="input-field error-rating">
+                <%= errors.rating.msg %>
+                </div>
+                <% } %>
+        </div>
+        <div class="form-container">
+                <label for="release_date">Fecha de Estreno: </label>
+                <input type="date" id="release_date" name="release_date">
+                <% if (locals.errors && errors.release_date) { %>
+                <div class="input-field error-release_date">
+                <%= errors.release_date.msg %>
+                </div>
+                <% } %>
+        </div>
+        <div class="form-container">
+            <label for="genre">Genero: </label>
+            <select name="genre" id="genre">
+                <option value="">Elegí un genero</option>
+                <% genres.forEach(genre=> { %>
+                <option value='<%= genre.id%>' <%= locals.oldFormData && (genre.id==oldFormData.id) ? 'selected' : null %>>
+                    <%= genre.name %>
+                </option>
+                <% }); %>
+            </select>
+            <% if (locals.errors && errors.genre) { %>
+                <div class="input-field error-genre">
+                    <%= errors.genre.msg %>
+                </div>
+            <% } %>
+        </div>
+        <input class="movie-button" type="submit" value="Agregar">
+        <input class="movie-button" type="reset" value="Borrar">
+        </form>
+    </div>    
+</section>
+<%- include('partials/footer') %>

@@ -8,8 +8,20 @@ body {
 }
 
 header {
-  background-color: gray;
-  padding: 1px;
+  display: flex;
+  justify-content: space-between;
+  background-color:rgb(77, 3, 95);
+  padding: 2px;
+}
+
+.title {
+  margin-right: 15px;
+}
+
+.header-button {
+  display: flex;
+  margin-top: 3px;
+  align-items: baseline;
 }
 
 a, a:link, a:visited, a:active {
@@ -19,8 +31,14 @@ a, a:link, a:visited, a:active {
 }
 
 h2 {
-  color: black;
-  line-height: 1.6;
+  
+  display: block;
+  font-size: 2em;
+  text-align:center;
+  margin-top: 0.83em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
 }
 
 h3 {
@@ -34,7 +52,7 @@ h4 {
 
 .menu-clicked {
   transform: scale(1.25);
-  opacity: 1;
+  opacity: 0.9;
 }
 
 .sidebar {
@@ -95,12 +113,84 @@ nav {
   color:black;
 }
 
-.movie {
-  margin: 15px;
+.input-field {
+		position: relative;
+		margin-bottom: 10px;
+		}
+
+label {
+    font-weight: bold;   
 }
 
-.movies-button {
+.box {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+    padding: 8px 2px 9px 20px;
+    height: 25px;
+    border: 1px solid grey;
+    box-sizing: border-box;
+    outline: none;
+  }
+
+.box #release_date, #title, #length, #awards, #rating {
+  align-content: center;
+}
+
+.movie {
+	background: #fff;
+  color: black;
+	width: 400px;
+	max-width: 100%;
+	box-sizing: border-box;
+	padding: 25px;
+	margin: 2% auto 0;
+	border-top: 5px solid rgb(77, 3, 95);
+  margin-bottom: 40px;
+}
+
+.movie-list {
+  display: flex;
+  flex-direction: column;
+  margin: 35px;
+  font-size: 25px;
+  width: 555px;
+  text-decoration: none;
+  list-style-type: none;
+  color: white;
+}
+
+.movie-item { 
+  margin-bottom: 3px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: rgba(46, 46, 46, 0);
+ }
+
+.movie-item:hover { 
+  opacity: 0.9;
+  background-color: purple;
+ }
+
+.movie-list a:visited, a:link {
+    color:white;
+}
+
+.add-movie {
+	background: #fff;
+  color: black;
+	width: 400px;
+	max-width: 100%;
+	box-sizing: border-box;
+	padding: 25px;
+	margin: 2% auto 0;
+	border-top: 5px solid rgb(77, 3, 95);
+  margin-bottom: 40px;
+}
+
+.movie-button {
   display: inline-block;
+  justify-content: space-around;
   background-color: black;
   color: white;
   border: 2px solid white;
@@ -117,11 +207,11 @@ nav {
   object-position: center;
 }
 
-.movies-button:hover { 
+.movie-button:hover { 
   opacity: 1;
   background-color: white;
   color: black;
-  border: 2px solid white;
+  border: 2px solid black;
  }
 
 .profile {
@@ -130,30 +220,76 @@ nav {
 }
 
 .user-profile {
+  display: flex;
+  margin: 15px;
   background-color: white;
   color: black;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: start;
-  margin: 3px;
-  margin-top: 2px;
-  margin-bottom: 2px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   padding: 2rem;
   width: auto;
   border-radius: 4px;
 }
 
+.add-user {
+  background: rgb(0, 0, 0);
+  color: white;
+	width: 400px;
+	max-width: 100%;
+	box-sizing: border-box;
+	padding: 25px;
+	margin: 2% auto 0;
+	border-top: 5px solid rgb(77, 3, 95);
+  margin-bottom: 40px;
+}
+
 .user {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+  background: rgb(0, 0, 0);
+  color: white;
+	width: 400px;
+	max-width: 100%;
+	box-sizing: border-box;
+	padding: 25px;
+	margin: 2% auto 0;
+	border: 2px solid rgb(77, 3, 95);
+  border-top: 5px solid rgb(77, 3, 95);
+  margin-bottom: 40px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  object-position: center;
+}
+
+.user:hover { 
+  opacity: 1;
+  background-color: rgb(77, 3, 95);
+  color: white;
+  border: 2px solid rgb(77, 3, 95);
+  border-top: 5px solid rgb(77, 3, 95);  
+ }
+
+ .user a:link, a:visited, a:active {
+  outline: none;
+  text-decoration: none;
+  color: white;
+}
+
+.user input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  
 }
 
 .user-button {
   display: inline-block;
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: white;
+  border: 2px solid rgb(77, 3, 95);
   width: 115px;
   font-weight: bold;
   text-align: center;
@@ -169,7 +305,7 @@ nav {
 
 .user-button:hover { 
   opacity: 1;
-  background-color: black;
+  background-color: rgb(77, 3, 95);
   color: white;
   border: 2px solid black;
  }
@@ -177,4 +313,15 @@ nav {
 .align-button {
   display: flex;
   flex-direction: row;
+}
+
+.input-field {
+  color: rgb(241, 44, 44);
+  font-size: 0.8rem
+}
+
+footer {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
 }

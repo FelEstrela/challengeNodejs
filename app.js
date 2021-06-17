@@ -1,41 +1,47 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const app = express();
 
-var indexRouter = require('./routes/home');
-var usersRouter = require('./routes/users');
+const session = require('express-session')
+const auth = require('./middlewares/authenticate');
 
-var app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
-app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
+
+const methodOverride = require('method-override')
+app.use(methodOverride('_method'));
+
+const path = require('path');
+app.use(express.static('public'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use(express.static(path.join(__dirname, 'views')));
+app.set('view engine', 'ejs');
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+const bcryptjs = require('bcryptjs');
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use(session({
+  secret: 'felipeEstrela',
+  resave: false,
+  saveUninitialized: true,
+}));
+app.use(auth)
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+
+var homeRoutes = require('./routes/home');
+var usersRoutes = require('./routes/users');
+var moviesRoutes = require('./routes/movies');
+
+
+
+app.use('/', homeRoutes);
+app.use('/user', usersRoutes);
+app.use('/movies', moviesRoutes);
+
+// port
+app.set('port', process.env.PORT || 1989);
+app.listen(app.get('port'), () => {
+  console.log('El servidor ha iniciado');
+  console.log('El servidor esta funcionando en el puerto', app.get('port'));
 });
 
 module.exports = app;

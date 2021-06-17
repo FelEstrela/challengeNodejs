@@ -3,24 +3,23 @@ module.exports = (sequelize, dataTypes) => {
         id: {
             autoIncrement: true,
             primaryKey: true,
-            allowNull: false,
             type: dataTypes.INTEGER(11),
         },
         createdAt: {
             field: 'created_at',
-            allowNull: false,
+            allowNull: true,
             type: dataTypes.DATE,
 
         },
         updatedAt: {
             field: 'updated_at',
-            allowNull: false,
+            allowNull: true,
             type: dataTypes.DATE,
 
         },
         deletedAt: {
             field: 'deleted_at',
-            allowNull: false,
+            allowNull: true,
             type: dataTypes.DATE,
 
         },
@@ -28,14 +27,30 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false,
             type: dataTypes.STRING(200),
         },
-        genre_id: {
+        rating: {
             allowNull: false,
+            type: dataTypes.DOUBLE,
+        },
+        awards: {
+            allowNull: false,
+            type: dataTypes.INTEGER,
+        },
+        release_date: {
+            allowNull: false,
+            type: dataTypes.DATE,
+        },
+        length: {
+            allowNull: true,
+            type: dataTypes.INTEGER
+        },
+        genre_id: {
+            allowNull: true,
             type: dataTypes.INTEGER,
         },
     },
         {
             tableName: 'movies',
-            timestapms: true,
+            timestamps: true,
             paranoid: true,
         });
 
@@ -45,7 +60,7 @@ module.exports = (sequelize, dataTypes) => {
             through: 'actor_movie',
             foreignKey: 'movie_id',
             otherKey: 'actor_id',
-            timestamps: true,
+            timestamps: false,
         });
         Movie.belongsTo(models.Genre, {
             as: 'genre',
